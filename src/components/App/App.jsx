@@ -56,9 +56,7 @@ const App = () => {
       });
     } catch (error) {
       setError(error);
-      toast.error(
-        `Whoops, something went wrong: ${error.message}. Try new request`
-      );
+      toast.error(`Whoops, something went wrong: ${error.message}. Try again`);
     } finally {
       setLoading(false);
     }
