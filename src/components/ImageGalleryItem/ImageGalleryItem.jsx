@@ -11,7 +11,6 @@ function ImageGalleryItem({ webformatURL, tags, largeImageURL, onClick }) {
         src={webformatURL}
         alt={tags}
         onClick={() => onClick({ largeImageURL, tags })}
-        // width="200px"
       />
     </li>
   );

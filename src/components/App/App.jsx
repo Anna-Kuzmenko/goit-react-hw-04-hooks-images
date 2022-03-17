@@ -14,7 +14,6 @@ const App = () => {
   const [searchValue, setSearchValue] = useState('');
   const [imagesArr, setImagesArr] = useState([]);
   const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(12);
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -34,7 +33,7 @@ const App = () => {
     setLoading(true);
 
     try {
-      getImages(searchValue, page, perPage).then(images => {
+      getImages(searchValue, page).then(images => {
         if (images.hits.length === 0) {
           toast.error(
             `No pictures ${searchValue}. Please, try another request`
@@ -52,7 +51,7 @@ const App = () => {
           })),
         ]);
 
-        setTotalPages(images.totalHits / perPage);
+        setTotalPages(images.totalHits / 12);
       });
     } catch (error) {
       setError(error);
@@ -60,7 +59,7 @@ const App = () => {
     } finally {
       setLoading(false);
     }
-  }, [searchValue, page, perPage, totalPages]);
+  }, [searchValue, page, totalPages, error]);
 
   const HendleFormSubmit = searchValue => {
     setSearchValue(searchValue);
